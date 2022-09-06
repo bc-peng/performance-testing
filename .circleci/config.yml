@@ -1,0 +1,52 @@
+version: 2.1
+
+jobs:
+  enter checkout page:
+    docker:
+      - image: cimg/node:16.17.0
+    steps:
+      - checkout
+      - run:
+          name: "Bring yourself back online"
+          command: echo "Dolores Abernath - To grown we all need to suffer."
+      - run:
+          name: "Install artillery and playwright"
+          command: npm run first
+      - run:
+          name: "Run performance tests"
+          command: npx artillery run --output test-run-report-enterCheckout.json artillery-enterCheckout.yml
+      - run:
+          name: "Generate report"
+          command: npx artillery report test-run-report-enterCheckout.json
+      - store_artifacts:
+          path: ./test-run-report-enterCheckout.json
+          destination: artifact-file
+      - store_artifacts:
+          path: ./test-run-report-enterCheckout.json.html
+  place order:
+    docker:
+      - image: cimg/node:16.17.0
+    steps:
+      - checkout
+      - run:
+          name: "Bring yourself back online"
+          command: echo "Dolores Abernath - To grown we all need to suffer."
+      - run:
+          name: "Install artillery and playwright"
+          command: npm run first
+      - run:
+          name: "Run performance tests"
+          command: npx artillery run --output test-run-report-placeOrder.json artillery-placeOrder.yml
+      - run:
+          name: "Generate report"
+          command: npx artillery report test-run-report-placeOrder.json
+      - store_artifacts:
+          path: ./test-run-report-placeOrder.json
+          destination: artifact-file
+      - store_artifacts:
+          path: ./test-run-report-placeOrder.json.html
+workflows:
+  performance testing:
+    jobs:
+      - enter checkout page
+      - place order

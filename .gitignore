@@ -1,0 +1,8 @@
+.idea
+.vscode
+__temp__
+node_modules
+build
+coverage
+*.html
+*.json
