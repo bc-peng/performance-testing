@@ -1,0 +1,15 @@
+config:
+  target: https://a67e6yxkbb.myprivaterelay.com/
+  phases:
+    - name: main
+      duration: 30
+      arrivalCount: 3
+  # Enable the Playwright engine:
+  engines:
+    playwright: {}
+  processor: "./playwright-login.js"
+scenarios:
+  - engine: playwright
+    flowFunction: "login"
+    flow: []
+    name: login

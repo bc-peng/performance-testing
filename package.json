@@ -5,7 +5,8 @@
   },
   "scripts": {
     "first": "npm ci && npx playwright install --with-deps",
-    "demo": "npx artillery run --output test-run-report-enterCheckout.json artillery-enterCheckout.yml && npx artillery report test-run-report-enterCheckout.json"
+    "demo": "npx artillery run --output test-run-report-enterCheckout.json artillery-enterCheckout.yml && npx artillery report test-run-report-enterCheckout.json",
+    "login": "npx artillery run --output test-run-report-login.json artillery-login.yml && npx artillery report test-run-report-login.json"
   },
   "dependencies": {
     "artillery": "^2.0.0-23",
