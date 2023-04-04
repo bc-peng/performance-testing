@@ -1,5 +1,7 @@
 config:
-  target: https://a67e6yxkbb.myprivaterelay.com/
+  plugins:
+      metrics-by-endpoint: {}
+  target: https://kingshark-test.mybigcommerce.com/
   phases:
     - name: warming up
       duration: 30
@@ -13,9 +15,9 @@ config:
   # Enable the Playwright engine:
   engines:
     playwright: {}
-  processor: "./playwright-placeOrder.js"
+  processor: "./playwright-simpleCheckout.js"
 scenarios:
   - engine: playwright
-    flowFunction: "placeOrder"
+    flowFunction: "simpleCheckout"
     flow: []
-    name: placeOrder
+    name: simpleCheckout

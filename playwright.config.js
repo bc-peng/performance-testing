@@ -6,8 +6,14 @@ const config = {
         {
             name: 'chromium',
             use: {
+                video: 'on',
+                trace: 'on',
                 ...devices['Desktop Chrome']
             },
+            reporter: [
+                ['list'],
+                ['json', {  outputFile: 'test-results.json' }]
+              ],
         },
     ]
 }

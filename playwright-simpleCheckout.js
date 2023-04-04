@@ -1,10 +1,10 @@
-module.exports = { placeOrder };
+module.exports = { simpleCheckout };
 
-async function placeOrder(page) {
-    await page.goto("https://a67e6yxkbb.myprivaterelay.com/smith-journal-13/");
+async function simpleCheckout(page) {
+    await page.goto("https://kingshark-test.mybigcommerce.com/dustpan-brush/");
     await page.locator('input:has-text("Add to Cart")').click();
     await page.locator('text=Proceed to checkout').click();
-    await page.waitForURL('https://a67e6yxkbb.myprivaterelay.com/checkout');
+    await page.waitForURL('https://kingshark-test.mybigcommerce.com/checkout');
     await page.locator('input[name="email"]').click();
     await page.locator('input[name="email"]').fill('test@example.com');
     await page.locator('[data-test="customer-continue-as-guest-button"]').click();
@@ -23,6 +23,6 @@ async function placeOrder(page) {
     await page.frameLocator('#bigpaypay-ccName iframe').locator('[aria-label="Name on Card"]').fill('ROBOT');
     await page.frameLocator('#bigpaypay-ccCvv iframe').locator('[aria-label="CVV"]').fill('123');
     await page.locator('text=Place Order').click();
-    await page.waitForURL('https://a67e6yxkbb.myprivaterelay.com/checkout/order-confirmation');
+    await page.waitForURL('https://kingshark-test.mybigcommerce.com/checkout/order-confirmation');
 }
 

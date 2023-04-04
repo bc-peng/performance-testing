@@ -1,0 +1,25 @@
+config:
+  plugins:
+      metrics-by-endpoint: {}
+  target: https://api.publicapis.org
+  phases:
+    - name: warming up
+      duration: 30
+      arrivalCount: 3
+    - name: going up
+      duration: 30
+      arrivalCount: 6
+    # - name: holding up
+    #   duration: 60
+    #   arrivalCount: 18
+scenarios:
+  - name: "Nashhorn"
+    flow:
+      - get:
+          url: "/entries"
+          expect:
+            statusCode: 200
+      - get:
+          url: "/categories"
+          expect:
+            statusCode: 200

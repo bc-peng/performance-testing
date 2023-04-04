@@ -1,0 +1,20 @@
+config:
+  target: https://my-dev-store-249512035.store.bcdev
+  phases:
+    - name: main
+      duration: 300
+      arrivalCount: 5
+      maxVusers: 1
+  # Enable the Playwright engine:
+  engines:
+    playwright:
+      launchOptions:
+        headless: true 
+      # defaultTimeout: 10000
+      # defaultNavigationTimeout: 10000
+  processor: "./playwright-loginCheckout.js"
+scenarios:
+  - engine: playwright
+    flowFunction: "loginCheckout"
+    flow: []
+    name: loginCheckout

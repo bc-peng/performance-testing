@@ -5,12 +5,16 @@
   },
   "scripts": {
     "first": "npm ci && npx playwright install --with-deps",
-    "demo": "npx artillery run --output test-run-report-enterCheckout.json artillery-enterCheckout.yml && npx artillery report test-run-report-enterCheckout.json",
-    "login": "npx artillery run --output test-run-report-login.json artillery-login.yml && npx artillery report test-run-report-login.json"
+    "simple-checkout": "npx artillery run --output test-run-report-simpleCheckout.json artillery-simpleCheckout.yml && npx artillery report test-run-report-simpleCheckout.json",
+    "login-checkout": "npx artillery run --output test-run-report-loginCheckout.json artillery-loginCheckout.yml && npx artillery report test-run-report-loginCheckout.json",
+    "req": "npx artillery run --output test-run-report-req.json artillery-http-req.yml && npx artillery report test-run-report-req.json"
   },
   "dependencies": {
     "artillery": "^2.0.0-23",
     "artillery-engine-playwright": "^0.1.0",
     "@playwright/test": "^1.25.2"
+  },
+  "devDependencies": {
+    "artillery-plugin-metrics-by-endpoint": "^1.0.2"
   }
 }
